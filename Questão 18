@@ -1,0 +1,79 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int multmat(int **x, int **y, int **c, int nl1, int nc1, int nc2){
+    int i, j, k, res;
+    for(i = 0; i< nl1; i++){
+        for(j = 0; j < nc2; j++){
+            res = 0;
+            for(k = 0; k < nl1; k++){
+                res = res + x[i][k]*y[k][j];
+            }
+            c[i][j] = res;
+        }
+    }
+    return c[nl1][nc2];
+}
+
+void *carregar(int **x, int nl, int nc){
+    int i,j;
+    for (i=0;i<nl;i++) {
+        for (j=0;j<nc;j++) {
+            printf("Digite o elemento [%d , %d] \t", i+1, j+1);
+            scanf("%d", &x[(i*nc)+j]);
+        }
+    }
+}
+
+void imprimir(int **x, int nl, int nc){
+    int i, j;
+    for(i = 0; i < nl; i++){
+        for(j = 0; j < nc; j++){
+            printf(" %d ", x[i][j]);
+        }
+    }
+}
+
+int main(){
+    int nl1, nl2, nc1, nc2, i, j;
+    nl1 = 2; nc1 = 3; nl2 = 3; nc2 = 2;
+
+    int **x, **y, **z;
+
+    //passo 1 - alocar array auxiliar
+    x = (int **) malloc(nl1*sizeof(int*));
+    y = (int **) malloc(nl2*sizeof(int*));
+    z = (int **) malloc(nl1*sizeof(int*));
+
+    //passo 2 - alocar as linhas da matriz
+    for (i = 0; i < nl1; i++){
+        x[i] = (int*) malloc(nc1*sizeof(int*));
+        z[i] = (int*) malloc(nc2*sizeof(int*));
+    }
+    for (i = 0; i < nl2; i++){
+        y[i] = (int*) malloc(nc2*sizeof(int*));
+    }
+
+    //passo 3 - usar a matriz
+
+    carregar(x,nl1,nc1);
+    carregar(y,nl2,nc2);
+
+    multmat(x, y, z, nl1, nc1, nc2);
+
+    imprimir(z, nl1, nc2);
+
+    //passo 4 - liberar a memória
+    for (i = 0; i < nl1; i++){
+        free(x[i]);
+        free(y[i]);
+        free(z[i]);
+    }
+
+    free (x);
+    free (y);
+    free (z);
+
+    return 0;
+}
