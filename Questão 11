@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+int main(){
+    float aloha[10], coisas[10][5], *pf, value = 2.2;
+    int i=3;
+
+    aloha[3] = 3; 
+
+    //printf("aloha[2] = %f \n", aloha[2]);
+    //scanf("%f", &aloha); 
+    //aloha = value; 
+    //printf("%f", aloha[0]);
+    //coisas[4][4] = aloha[3]; 
+    //coisas[5] = aloha; 
+    //pf = value; 
+
+    pf = aloha;
+    printf("%f \n", *pf);
+
+    return 0;
+}
