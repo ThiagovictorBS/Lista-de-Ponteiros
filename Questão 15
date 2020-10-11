@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+//comparar os valores dos vetores e retornar a subtração entre eles. Caso A > B, o resultado será positivo, caso A = B, valores iguais.
+float comparar(float *a, float *b) {
+   return (*a - *b);
+}
+
+int main () {
+    float *x;
+    int n, i;
+    float (*p)(float,float);
+
+    scanf("quantos numeros quer alocar = %d", n);
+    x = (float*) malloc(n*sizeof(float));
+
+    for(i = 0; i < n; i++){
+        scanf("insira os numeros %f ", x[i]);
+    }
+
+    // ponteiro da função de comparação
+    p = comparar;
+
+    //ordena o array
+    
+    qsort(x, 5, sizeof(float), p); // qsort usa como argumento um ponteiro, tamanho do vetor, tamanho do byte, função de comparação.
+
+   //mostra os valores do array
+   for( i = 0 ; i < 5; i++ ) {
+      printf("%f ", x[i]);
+   }
+
+   return 0;
+}
