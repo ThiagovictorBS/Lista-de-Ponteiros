@@ -1,0 +1,9 @@
+int funcao(int a){
+    return a+1;
+}
+
+int main (){
+    int (*pf)(int) = &funcao; // o ponteiro é capaz de guardar um endereço de uma função que recebe um parâmetro e devolve um parâmetro
+    printf("valor = %d\n", pf(1));
+    return 0;
+}
