@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void selecao(float vet[], int n){
+    int i, j, min, *a;
+
+    for (i=0; i<=n-1; i++){
+        min = i;
+    for (j=i+1; j<=n; j++){
+           if (vet[j] < vet[min])
+            min = j;
+    }
+    *a = vet[min];
+    vet[min] = vet[i];
+    vet[i] = *a;
+    }
+}
+int main(){
+    float *x;
+    int n, i;
+
+    scanf("quantos numeros quer alocar = %d", n);
+    x = (float*) malloc(n*sizeof(float));
+
+    for(i = 0; i < n; i++){
+        scanf("insira os numeros %f ", x[i]);
+    }
+
+    selecao(x, n);
+
+    for(i = 0; i < n; i++){
+        printf("%f ", x[i]);
+    }
+
+    return 0;
+}
