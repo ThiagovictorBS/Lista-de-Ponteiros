@@ -1,16 +1,1 @@
-#include <stdio.h>
 
-int main()
-{
-    //char x[4]; 
-    //int x[4];
-    //float x[4];
-    double x[4];
-
-    printf("%d \n", x);
-    printf("%d \n", x+1);
-    printf("%d \n", x+2);
-    printf("%d \n", x+3);
-
-    return 0;
-}
